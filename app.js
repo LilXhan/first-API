@@ -1,8 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 // Router
-const authRouters = require('./routers/auth').router
-const teamsRouters = require('./routers/teams').router
+const authRouters = require('./auth/auth.router').router
+const teamsRouters = require('./teams/teams.router').router
 
 const app = express()
 const port = 3000
@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/auth', authRouters)
-
 app.use('/teams', teamsRouters)
 
 app.listen(port, () => {

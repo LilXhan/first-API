@@ -1,11 +1,12 @@
 const express = require('express');
+const res = require('express/lib/response');
 const router = express.Router();
 const passport = require('passport');
 const axios = require('axios').default;
-require('../auth')(passport);
+require('../tools/auth')(passport);
 
-const teamsController = require('../controllers/teams');
-const { getUser } = require('../controllers/users')
+const teamsController = require('./teams.controller');
+const { getUser } = require('../auth/users')
 
 router.route('/')
   .get(passport.authenticate('jwt', { session: false }),
@@ -51,8 +52,10 @@ router.route('/pokemons')
     })
 
 router.route('/pokemons/:pokeid')
-  .delete(() => {
-    res.status(200).send('Hello World!');
-  })
+  .delete(passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+      teamsController.deletePokemonAt(req.user.userId, req.params.pokeid);
+      res.status(200).send();
+    });
 
 exports.router = router;

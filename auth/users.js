@@ -1,7 +1,7 @@
 const { get } = require('express/lib/response');
 const uuid = require('uuid')
-const crypto = require('../crypto');
-const teams = require('./teams');
+const crypto = require('../tools/crypto');
+const teams = require('../teams/teams.controller');
 let userDataBase = {};
 
 const cleanUpUsers = () => {
