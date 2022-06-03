@@ -1,25 +1,25 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express')
+const bodyParser = require('body-parser')
 // Router
-const authRouters = require('./routers/auth').router;
+const authRouters = require('./routers/auth').router
 const teamsRouters = require('./routers/teams').router
 
-const app = express();
-const port = 3000;
-app.use(bodyParser.json());
+const app = express()
+const port = 3000
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
   // req (request) es la request, la peticion
   // res (response) es la respuesta
-  res.status(200).send('Hello World!');
+  res.status(200).send('Hello World!')
 })
 
-app.use('/auth', authRouters);
+app.use('/auth', authRouters)
 
-app.use('/teams', teamsRouters);
+app.use('/teams', teamsRouters)
 
 app.listen(port, () => {
-  console.log(`Server started at port 3000`)
+  console.log('Server started at port 3000')
 })
 
-exports.app = app;
+exports.app = app
