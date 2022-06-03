@@ -1,4 +1,4 @@
-#Objetivo:
+# Objetivo:
 Definir una api para gestionar nuestro equipo pokemon.
 
 # Acciones:
